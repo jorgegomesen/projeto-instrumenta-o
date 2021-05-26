@@ -8,10 +8,11 @@
     <link href="css/materialize.min.css" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-<div class="row fill-height">
-    <div class="col s2 menu fill-height">
+<div>
+    <div class="menu fill-height">
         <div class="row">
             <div class="col s12 center-align">
                 <p class="mb-0 font-weight-bold menu-title">DAA</p>
@@ -19,29 +20,41 @@
             </div>
         </div>
     </div>
-    <div class="col s10 corpo fill-height">
+    <div class="corpo fill-height">
         <div class="row">
-            <div class="col s12">
+            <div class="col s12 mt-10">
                 <h4>Painel de Controle</h4>
             </div>
         </div>
         <div class="row">
             <div class="col s8">
                 <div class="card-panel">
+                    <div class="input-field col s12">
+                        <select>
+                            <option value="" disabled selected>Seleciona uma data</option>
+                        </select>
+                        <label>Seleção de data</label>
+                    </div>
+                    <canvas id="myChart1"></canvas>
                 </div>
             </div>
             <div class="col s4">
-                <div class="card-panel">
+                <div class="card-panel center-align users-info">
+                    <p class="blue-font">Total</p>
+                    <p id="totalUsers" class="font-weight-bold blue-font">Total</p>
+                    <p><span class="material-icons">person</span>Usuários</p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col s4">
                 <div class="card-panel">
+                    <canvas id="myChart2"></canvas>
                 </div>
             </div>
             <div class="col s4">
                 <div class="card-panel">
+                    <canvas id="myChart3"></canvas>
                 </div>
             </div>
             <div class="col s4">

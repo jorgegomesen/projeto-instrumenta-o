@@ -13,21 +13,36 @@ html, body {
 
 .menu {
     background-color: #EFEFEF;
+    position: fixed;
+    width: 320px;
 }
 
 .corpo {
     background-color: #FFFFFF;
+    margin-left: 320px;
 }
 
-.font-weight-bold{
+.users-info p:nth-child(1), .users-info p:nth-child(3) {
+    font-size: x-large;
+}
+
+.users-info p:nth-child(2) {
+    font-size: xxx-large;
+}
+
+.blue-font {
+    color: #3E6BEC;
+}
+
+.font-weight-bold {
     font-weight: bold;
 }
 
-.menu-title{
+.menu-title {
     font-size: 3.5em;
 }
 
-.menu-subtitle{
+.menu-subtitle {
     font-size: 1em;
     letter-spacing: 5px;
 }

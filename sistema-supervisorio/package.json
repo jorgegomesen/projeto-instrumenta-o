@@ -13,6 +13,7 @@
     "@serialport/parser-readline": "^9.0.7",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "serialport": "^9.0.7"
   }
 }
