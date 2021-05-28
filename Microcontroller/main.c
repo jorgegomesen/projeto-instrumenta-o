@@ -7,7 +7,10 @@
 
 #define TRIGGER_PIN PIND3
 #define ECHO_PIN PIND2
-#define LED_PIN PINB0
+#define GREEN_LED_PIN PINB0
+#define RED_LED_PIN PINB4
+#define BUTTON_PIN PINC0
+#define MAX_VOLUME 5
 
 volatile unsigned short contador;
 
@@ -22,8 +25,11 @@ void iniciarPortas() {
 	TCCR1B = (0 << CS12) | (1 << CS11) | (1 << CS10);
 
 	//Configurando PB0 como saída para estímulo do LED
-	DDRB |= (1 << LED_PIN);
+	DDRB |= (1 << GREEN_LED_PIN) | (1 << RED_LED_PIN);
 	PORTB = 0x00; // Inicia LED desligado
+
+	//Configurando PC0 como entrada
+	PORTC |= (0 << BUTTON_PIN);
 }
 
 void iniciarSerial(){
@@ -106,6 +112,10 @@ int main(void){
 	long distancia;
 	char servo_posicionado = 0;
 	char distancia_str[5];
+	// o frasco de álcool em gel comporta apenas 500ml
+	int max_volume = MAX_VOLUME;
+	char is_red_led_on = 0;
+	char status_recarga_transmitido = 0;
 
 	iniciarSerial();
 	iniciarPortas();
@@ -115,19 +125,52 @@ int main(void){
 	sei();
 
 	while (1){
-		//		Tempo entre a leitura de dados
+		if(PINC & (1 << BUTTON_PIN) && is_red_led_on){
+			PORTB &= (0 << RED_LED_PIN);
+			max_volume = MAX_VOLUME;
+			is_red_led_on = 0;
+
+			if(status_recarga_transmitido){
+				//Status = recharged
+				sprintf(distancia_str, "%s", "REC");
+				enviarTextoSerial(distancia_str);
+
+				status_recarga_transmitido = 0;
+			}
+
+			continue;
+		}
+
+		if(max_volume < 2){
+			PORTB |= (1 << RED_LED_PIN);
+			is_red_led_on = 1;
+
+			if(!status_recarga_transmitido){
+				//Status = empty
+				sprintf(distancia_str, "%s", "EMP");
+				enviarTextoSerial(distancia_str);
+				status_recarga_transmitido = 1;
+			}
+
+			continue;
+		}
+
+		status_recarga_transmitido = 0;
+
+		//Tempo entre a leitura de dados
 		_delay_ms(500);
 
 		distancia = medirDistancia();
 
 		if(distancia < 10){
-			sprintf(distancia_str, "%ld", distancia);
-
+			//			sprintf(distancia_str, "%ld", distancia);
+			//Status = dispenser
+			sprintf(distancia_str, "%s", "DIS");
 			enviarTextoSerial(distancia_str);
 
 			//			if(!servo_posicionado){
 			//Acende LED
-			PORTB |= (1 << LED_PIN);
+			PORTB |= (1 << GREEN_LED_PIN);
 
 			setarPosicaoServo(80);
 			_delay_ms(500);
@@ -141,13 +184,17 @@ int main(void){
 			_delay_ms(500);
 
 			//Desliga LED
-			PORTB &= ~(1 << LED_PIN);
+			PORTB &= ~(1 << GREEN_LED_PIN);
 
 			setarPosicaoServo(0);
 
 			//Tempo de reação do usuário para retirar a mão de próximo do sensor
 			_delay_ms(3000);
 			//			}
+
+			//Cada jorrada dispensa 2ml
+			max_volume -= 2;
+
 			continue;
 		}
 

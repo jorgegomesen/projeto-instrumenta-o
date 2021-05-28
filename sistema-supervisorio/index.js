@@ -15,6 +15,10 @@ port.on('open', () => {
 });
 
 parser.on('data', data => {
+    console.log(data);
+
+    let type = data;
+
     let data_obj = {};
     let rawdata = fs.readFileSync(FILE_NAME);
     let current_data = Buffer.byteLength(rawdata) ? JSON.parse(rawdata) : [];
@@ -24,6 +28,19 @@ parser.on('data', data => {
     data_obj.date = date[0];
     data_obj.day_str = day_str;
     data_obj.time = date[1];
+
+    switch (data){
+        case "DIS":
+            data_obj.status = "Dispensado";
+            break;
+        case "EMP":
+            data_obj.status = "Vazio";
+            break;
+        case "REC":
+            data_obj.status = "Recarregado";
+            break;
+        default:
+    }
 
     current_data.push(data_obj);
 
