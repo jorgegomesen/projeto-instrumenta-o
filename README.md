@@ -5,7 +5,7 @@ https://www.instructables.com/How-to-get-started-with-Eclipse-and-AVR/
 https://www.embarcados.com.br/atmel-studio/
 
 # Passos para rodar sistema supervisório
-### Instalação Node.js
+### Instalação do Node.js
 https://nodejs.org/en/
 
 ### Iniciando servidor
