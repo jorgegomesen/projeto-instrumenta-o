@@ -9,8 +9,8 @@ https://www.embarcados.com.br/atmel-studio/
 https://nodejs.org/en/
 
 ### Iniciando servidor
-- Acesse o caminho projeto-instrumentacao-o/sistema-supervisorio
+- Acesse o caminho **projeto-instrumentacao-o/sistema-supervisorio**
 - node index.js
 
 ### Visualizando sistema
-Acesse o arquivo index.html em seu navegador de confiança
+Acesse o arquivo **index.html** em seu navegador de confiança
