@@ -25,6 +25,11 @@ $(document).ready(async function () {
         pie_graph_1_inst = setSecGraph(pie_graph_1_inst, data_response.dispensed_by_day);
         pie_graph_2_inst = setThirdGraph(pie_graph_2_inst, data_response.dispensed_by_hour);
         recharges_graph_inst = setRechargesByMonthGraph(recharges_graph_inst, data_response.recharges_by_month);
+
+        $('#sel-alcool-dispensed-date').on('change', function () {
+            const selected_date = $(this).val();
+            line_graph_inst = setFirstGraph(line_graph_inst, data_response.dispensed_by_date[selected_date]);
+        });
     } catch (error) {
         alert(error);
     }
@@ -43,9 +48,8 @@ function tooltipCustom(items) {
 function setFirstGraph(instance, data) {
     let ctx = document.getElementById('myChart1').getContext('2d');
 
-    if (instance) {
-        return;
-    }
+    if (instance)
+        instance.destroy();
 
     return new Chart(ctx, {
         type: 'line',
@@ -58,7 +62,7 @@ function setFirstGraph(instance, data) {
             datasets: [{
                 label: 'Álcool dispensado',
                 data: data,
-                backgroundColor:['black'],
+                backgroundColor: ['black'],
                 borderColor: '#62CA76',
                 borderWidth: 1
             }]
@@ -208,7 +212,7 @@ function setRechargesByMonthGraph(instance, data) {
             datasets: [{
                 label: 'Quantidade de recargas',
                 data: data.recharges,
-                backgroundColor:['black'],
+                backgroundColor: ['black'],
                 borderColor: '#62CA76',
                 borderWidth: 1
             }]
