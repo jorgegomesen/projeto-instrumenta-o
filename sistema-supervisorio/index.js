@@ -29,7 +29,7 @@ parser.on('data', data => {
     data_obj.day_str = day_str;
     data_obj.time = date[1];
 
-    switch (data){
+    switch (data) {
         case "DIS":
             data_obj.status = "Dispensado";
             break;
@@ -50,33 +50,61 @@ parser.on('data', data => {
 
 
 App.get('/data', function (req, res) {
-    let rawdata = fs.readFileSync(FILE_NAME);
-    let current_data = Buffer.byteLength(rawdata) ? JSON.parse(rawdata) : [];
+    const rawdata = fs.readFileSync(FILE_NAME);
+    const current_data = Buffer.byteLength(rawdata) ? JSON.parse(rawdata) : [];
     let users_amount = current_data.length;
     let alcool_dispensed_by_date = {};
     let alcool_dispensed_by_day = {};
     let alcool_dispensed_by_hour = {};
+    let recharges_by_month = {
+        month_names: [
+            'Janeiro',
+            'Fevereiro',
+            'Março',
+            'Abril',
+            'Maio',
+            'Junho',
+            'Julho',
+            'Agosto',
+            'Setembro',
+            'Outubro',
+            'Novembro',
+            'Dezembro',
+        ],
+        recharges: [
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        ]
+    };
     let hour = null;
 
     for (let reg of current_data) {
-        hour = reg.time.split(':')[0];
 
-        if (!alcool_dispensed_by_date[reg.date])
-            alcool_dispensed_by_date[reg.date] = [
-                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            ];
+        switch (reg.status) {
+            case "Dispensado":
+                hour = reg.time.split(':')[0];
 
-        alcool_dispensed_by_date[reg.date][parseInt(hour)]++;
+                if (!alcool_dispensed_by_date[reg.date])
+                    alcool_dispensed_by_date[reg.date] = [
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    ];
 
-        if (!alcool_dispensed_by_day[reg.day_str])
-            alcool_dispensed_by_day[reg.day_str] = 0;
+                alcool_dispensed_by_date[reg.date][parseInt(hour)]++;
 
-        alcool_dispensed_by_day[reg.day_str]++;
+                if (!alcool_dispensed_by_day[reg.day_str])
+                    alcool_dispensed_by_day[reg.day_str] = 0;
 
-        if (!alcool_dispensed_by_hour[hour])
-            alcool_dispensed_by_hour[hour] = 0;
+                alcool_dispensed_by_day[reg.day_str]++;
 
-        alcool_dispensed_by_hour[hour]++;
+                if (!alcool_dispensed_by_hour[hour])
+                    alcool_dispensed_by_hour[hour] = 0;
+
+                alcool_dispensed_by_hour[hour]++;
+                break;
+            case "Recarregado":
+                const month_number = parseInt(reg.date.split('/')[1]);
+
+                recharges_by_month.recharges[month_number - 1]++;
+        }
     }
 
     let dispensed_by_day = {
@@ -105,6 +133,7 @@ App.get('/data', function (req, res) {
         'dispensed_by_date': Object.assign({}, alcool_dispensed_by_date),
         'dispensed_by_hour': dispensed_by_hour,
         'dispensed_by_day': dispensed_by_day,
+        'recharges_by_month': recharges_by_month,
         'total_users': users_amount
     });
 });

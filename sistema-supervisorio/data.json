@@ -28,5 +28,53 @@
     "day_str": "quarta-feira",
     "time": "20:09:19",
     "status": "Dispensado"
+  },
+  {
+    "date": "01/06/2021",
+    "day_str": "terça-feira",
+    "time": "21:26:43",
+    "status": "Dispensado"
+  },
+  {
+    "date": "01/06/2021",
+    "day_str": "terça-feira",
+    "time": "21:26:48",
+    "status": "Dispensado"
+  },
+  {
+    "date": "01/06/2021",
+    "day_str": "terça-feira",
+    "time": "21:26:53",
+    "status": "Vazio"
+  },
+  {
+    "date": "01/06/2021",
+    "day_str": "terça-feira",
+    "time": "21:27:42",
+    "status": "Recarregado"
+  },
+  {
+    "date": "01/06/2021",
+    "day_str": "terça-feira",
+    "time": "21:54:20",
+    "status": "Dispensado"
+  },
+  {
+    "date": "01/06/2021",
+    "day_str": "terça-feira",
+    "time": "21:54:28",
+    "status": "Dispensado"
+  },
+  {
+    "date": "01/06/2021",
+    "day_str": "terça-feira",
+    "time": "21:54:33",
+    "status": "Vazio"
+  },
+  {
+    "date": "01/06/2021",
+    "day_str": "terça-feira",
+    "time": "21:54:37",
+    "status": "Recarregado"
   }
 ]

@@ -2,6 +2,7 @@ $(document).ready(async function () {
     let line_graph_inst = null;
     let pie_graph_1_inst = null;
     let pie_graph_2_inst = null;
+    let recharges_graph_inst = null;
     let current_date = new Date().toLocaleString('pt-br', {timeZone: 'America/Recife'}).split(' ')[0];
 
     try {
@@ -23,6 +24,7 @@ $(document).ready(async function () {
         line_graph_inst = setFirstGraph(line_graph_inst, data_response.dispensed_by_date[current_date]);
         pie_graph_1_inst = setSecGraph(pie_graph_1_inst, data_response.dispensed_by_day);
         pie_graph_2_inst = setThirdGraph(pie_graph_2_inst, data_response.dispensed_by_hour);
+        recharges_graph_inst = setRechargesByMonthGraph(recharges_graph_inst, data_response.recharges_by_month);
     } catch (error) {
         alert(error);
     }
@@ -188,6 +190,44 @@ function setThirdGraph(instance, data) {
                     text: 'Fluxo de álcool dispensado por hora',
                 }
             },
+        }
+    });
+}
+
+function setRechargesByMonthGraph(instance, data) {
+    let ctx = document.getElementById('recharges-by-month').getContext('2d');
+
+    if (instance) {
+        return;
+    }
+
+    return new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.month_names,
+            datasets: [{
+                label: 'Quantidade de recargas',
+                data: data.recharges,
+                backgroundColor:['black'],
+                borderColor: '#62CA76',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Fluxo de recargas por mês',
+                }
+            },
+            scales: {
+                y: {
+                    ticks: {
+                        numSteps: 1,
+                        beginAtZero: true
+                    },
+                }
+            }
         }
     });
 }
