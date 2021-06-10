@@ -52,7 +52,7 @@ parser.on('data', data => {
 App.get('/data', function (req, res) {
     const rawdata = fs.readFileSync(FILE_NAME);
     const current_data = Buffer.byteLength(rawdata) ? JSON.parse(rawdata) : [];
-    let users_amount = current_data.length;
+    let users_amount = 0;
     let alcool_dispensed_by_date = {};
     let alcool_dispensed_by_day = {};
     let alcool_dispensed_by_hour = {};
@@ -81,6 +81,8 @@ App.get('/data', function (req, res) {
 
         switch (reg.status) {
             case "Dispensado":
+                users_amount++;
+
                 hour = reg.time.split(':')[0];
 
                 if (!alcool_dispensed_by_date[reg.date])

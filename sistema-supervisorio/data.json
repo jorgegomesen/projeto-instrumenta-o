@@ -124,5 +124,131 @@
     "day_str": "quinta-feira",
     "time": "09:56:56",
     "status": "Recarregado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:16:41",
+    "status": "Dispensado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:17:17",
+    "status": "Dispensado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:17:21",
+    "status": "Vazio"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:17:32",
+    "status": "Recarregado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:17:33",
+    "status": "Dispensado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:17:38",
+    "status": "Dispensado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:17:43",
+    "status": "Vazio"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:23:31",
+    "status": "Recarregado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:23:32",
+    "status": "Dispensado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:23:48",
+    "status": "Dispensado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:23:53",
+    "status": "Vazio"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:24:09",
+    "status": "Recarregado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:31:14",
+    "status": "Dispensado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:31:30",
+    "status": "Dispensado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "10:31:34",
+    "status": "Vazio"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "11:57:21",
+    "status": "Recarregado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "14:15:05",
+    "status": "Dispensado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "14:37:15",
+    "status": "Dispensado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "14:37:20",
+    "status": "Vazio"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "14:37:32",
+    "status": "Recarregado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "14:37:45",
+    "status": "Dispensado"
   }
 ]
