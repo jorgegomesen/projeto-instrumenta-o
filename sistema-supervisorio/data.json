@@ -100,5 +100,29 @@
     "day_str": "terça-feira",
     "time": "22:06:32",
     "status": "Recarregado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "09:56:45",
+    "status": "Dispensado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "09:56:50",
+    "status": "Dispensado"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "09:56:55",
+    "status": "Vazio"
+  },
+  {
+    "date": "10/06/2021",
+    "day_str": "quinta-feira",
+    "time": "09:56:56",
+    "status": "Recarregado"
   }
 ]
