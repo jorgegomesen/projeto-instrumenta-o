@@ -10,7 +10,7 @@
 #define GREEN_LED_PIN PINB0
 #define RED_LED_PIN PINB4
 #define BUTTON_PIN PINC0
-#define MAX_VOLUME 5
+#define MAX_VOLUME 500
 
 volatile unsigned short contador;
 
